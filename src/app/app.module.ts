@@ -11,7 +11,8 @@ import { productFilterPipe } from './product/product-filter.pipe'
   declarations: [
     AppComponent,
     ProductComponent,
-    productFilterPipe
+    // Import the pipe so as to make it available to all components within this module.
+    productFilterPipe,
   ],
   imports: [
     BrowserModule,

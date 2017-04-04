@@ -1,10 +1,13 @@
 import { Component,  OnInit } from '@angular/core';
+//import the IProduct interface to make the products strongly typed.
 import { IProduct } from './product';
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  // make use of relative paths so as to eliminate absolute imports.
+  moduleId: module.id,
+  templateUrl: 'product.component.html',
+  styleUrls: ['product.component.css']
 })
 export class ProductComponent implements OnInit {
 
