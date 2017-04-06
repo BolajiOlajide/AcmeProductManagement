@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
-import { productFilterPipe } from './product/product-filter.pipe'
+import { productFilterPipe } from './product/product-filter.pipe';
+import { StarComponent } from './star/star.component'
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { productFilterPipe } from './product/product-filter.pipe'
     ProductComponent,
     // Import the pipe so as to make it available to all components within this module.
     productFilterPipe,
+    StarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,22 +1,13 @@
-import { Component,  OnInit } from '@angular/core';
-//import the IProduct interface to make the products strongly typed.
-import { IProduct } from './product';
+import { Injectable } from '@angular/core';
+import { IProduct } from './product/product';
 
-@Component({
-  selector: 'app-product',
-  // make use of relative paths so as to eliminate absolute imports.
-  moduleId: module.id,
-  templateUrl: 'product.component.html',
-  styleUrls: ['product.component.css']
-})
-export class ProductComponent implements OnInit {
+@Injectable()
+export class ProductService {
 
-    pageTitle: string = 'Product List';
-    imageWidth: number = 50;
-    imageMargin: number = 2;
-    showImage: boolean = false;
-    listFilter: string = '';
-    products: IProduct[] = [
+  constructor() { }
+
+  getProducts(): IProduct[] {
+    return [
     {
         "productId": 1,
         "productName": "Leaf Rake",
@@ -66,17 +57,8 @@ export class ProductComponent implements OnInit {
         "price": 35.95,
         "starRating": 4.6,
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
-    }];
-    toggleImage(): void {
-      this.showImage = !this.showImage
     }
-
-    ngOnInit(): void {
-      console.log("In OnInit");
-    }
-
-    onRatingClicked(message: string): void {
-        this.pageTitle = 'Product List ' + message;
-    }
+]
+   }
 
 }
