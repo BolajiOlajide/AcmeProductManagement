@@ -11,12 +11,14 @@ import { StarComponent } from './star/star.component'
 import { ProductService } from "app/product.service";
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductGuardService } from "app/product-guard.service";
 
 const routes: Routes = [
-  { path: 'product', component: ProductComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'products', component: ProductComponent },
+  { path: 'product/:id' ,canActivate: [ ProductGuardService ], component: ProductDetailComponent },
   { path: 'welcome', component: WelcomeComponent },
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' }
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Default route
+  { path: '**', redirectTo: 'welcome', pathMatch: 'full' } // Wildcard route
 ]
 
 @NgModule({
@@ -34,7 +36,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService],
+  providers: [ProductService, ProductGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
